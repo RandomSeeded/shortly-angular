@@ -7,7 +7,6 @@ describe('LinksController', function () {
   // to retrieve our dependencies
   beforeEach(module('shortly'));
   beforeEach(inject(function ($injector) {
-
     // mock out our dependencies
     $rootScope = $injector.get('$rootScope');
     $httpBackend = $injector.get('$httpBackend');
