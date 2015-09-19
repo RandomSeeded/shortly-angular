@@ -15,7 +15,7 @@ angular.module('shortly.services', [])
     return $http({
       method: 'POST',
       url: '/api/links',
-      data: url
+      data: {url: url}
     })
     .then(function (resp) {
       return resp.data;
@@ -62,6 +62,7 @@ angular.module('shortly.services', [])
   };
 
   var signout = function () {
+    console.log('SIGNING OUT YO');
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };

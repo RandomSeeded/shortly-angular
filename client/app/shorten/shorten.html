@@ -1,6 +1,12 @@
-<div id='container'>
-<!-- Your code here -->
-
+<div id='container' ng-controller = 'ShortenController'>
+  <div class = "creator">
+    <form name='creatorForm' novalidate>
+        <input class='text' type='url' name='url' ng-model="newUrl" required>
+        <input type='submit' value='Shorten' ng-disabled = "creatorForm.$invalid" ng-click="addLink(newUrl)">
+      <div class='message' ng-show="creatorForm.url.$error.required">URL Required!</div>
+      <div class='message' ng-show="creatorForm.url.$error.url">Invalid URL!</div>
+    </form>
+  </div>
 </div>
 
 
