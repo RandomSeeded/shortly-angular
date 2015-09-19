@@ -9,10 +9,10 @@
     <h1>Shortly</h1>
     <div class='navigation' ng-controller = "AuthController">
     <ul>
-      <div ng-show='!isAuth()'>
+      <div ng-show='isAuth()'>
         <li><a href='#/links' class='index'>All Links</a></li>
         <li><a href='#/shorten' class='create'>Shorten</a></li>
-        <li><a href="#" class='signout' ng-click = ''>Sign out</a></li>
+        <li><a href="#" class='signout' ng-click = 'signout()'>Sign out</a></li>
       </div>
       <div ng-show='!isAuth()'>
         <li><a href='#/signin' class='signin'>Sign in</a></li>

@@ -9,23 +9,26 @@ angular.module('shortly', [
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
     })
     .when('/links', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate: true
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      authenticate: true
     })
     .when('/', {
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate: true
     });
     // Your code here
 
@@ -34,6 +37,7 @@ angular.module('shortly', [
     $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
+  console.log("HELLO!");
   // this is an $httpInterceptor
   // its job is to stop all out going request
   // then look in local storage and find the user's token
@@ -41,6 +45,7 @@ angular.module('shortly', [
   var attach = {
     request: function (object) {
       var jwt = $window.localStorage.getItem('com.shortly');
+      console.log("JWT", jwt);
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
